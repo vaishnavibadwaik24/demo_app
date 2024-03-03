@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +38,11 @@ Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/category/update/{id}',[CategoryController::class,'update']);
 Route::get('/category/delete/{id}', [CategoryController::class, 'destroy']);
+
+// Blog
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::post('/blog/store',[BlogController::class,'store']);
+Route::get('/blog/create', [BlogController::class, 'create'])->middleware('auth');
+Route::get('/blog/edit/{id}', [BlogController::class, 'edit']);
+Route::post('/blog/update/{id}', [BlogController::class, 'update']);
+Route::get('/blog/delete/{id}', [BlogController::class, 'destroy']);
