@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +29,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Category
+Route::get('/category/create', [CategoryController::class, 'create'])->middleware('auth');
+Route::post('/category/store',[CategoryController::class,'store']);
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
+Route::post('/category/update/{id}',[CategoryController::class,'update']);
+Route::get('/category/delete/{id}', [CategoryController::class, 'destroy']);
