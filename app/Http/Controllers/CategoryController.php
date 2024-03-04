@@ -13,6 +13,11 @@ class CategoryController extends Controller
         $data->save();
     }
 
+    public function create()
+    {
+        return view('category.create');
+    }
+
     public function index()
     {
         $categories = Category::all();

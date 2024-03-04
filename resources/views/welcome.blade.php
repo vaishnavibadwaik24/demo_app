@@ -1,4 +1,24 @@
-<!DOCTYPE html>
+{{-- @extends('layouts.master')
+@section('content')
+
+<!-- start slider -->
+<div class="headvideodesk">
+    <div id="slider-block-header" class="carousel slide carousel-fade-new" data-ride="carousel">
+      <div class="carousel-inner" id="slider-block-header-inner" role="listbox" style="width: 100%;">
+        <div class="item-active">
+          <img class="img-responsive" src="{{ asset('uploads/Banner1.jpg') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end slider -->
+
+@endsection --}}
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -129,4 +149,4 @@
             </div>
         </div>
     </body>
-</html>
+</html> --}}
