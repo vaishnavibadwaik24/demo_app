@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+{{-- @extends('layouts.master')
+@section('content') --}}
 
 <form action="{{url('blog/store')}}" method="POST" class="bg-white" enctype="multipart/form-data">
   @csrf
@@ -51,5 +51,5 @@
   </section>
 </form>
 
-@endsection
+{{-- @endsection --}}
 

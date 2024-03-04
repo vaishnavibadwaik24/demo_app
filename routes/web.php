@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
 // Category
 Route::get('/category/create', [CategoryController::class, 'create'])->middleware('auth');
 Route::post('/category/store',[CategoryController::class,'store']);
@@ -46,3 +45,5 @@ Route::get('/blog/create', [BlogController::class, 'create'])->middleware('auth'
 Route::get('/blog/edit/{id}', [BlogController::class, 'edit']);
 Route::post('/blog/update/{id}', [BlogController::class, 'update']);
 Route::get('/blog/delete/{id}', [BlogController::class, 'destroy']);
+
+require __DIR__.'/auth.php';

@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+{{-- @extends('layouts.master')
+@section('content') --}}
 <form action="{{url('category/store')}}" method="POST" class="bg-white">
     @csrf
     <section class="text-gray-600 body-font relative">
@@ -20,4 +20,4 @@
       </div>
     </section>
 </form>
-@endsection
+{{-- @endsection --}}

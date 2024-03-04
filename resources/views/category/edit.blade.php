@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+{{-- @extends('layouts.master')
+@section('content') --}}
 <form action="{{url('category/update',$data->id)}}" method="POST">
     @csrf
 <div class="lg:w-1/2 md:w-1/ px-6 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
@@ -13,4 +13,4 @@
       class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Update</button>
   </div>
 </form>
-@endsection
+{{-- @endsection --}}

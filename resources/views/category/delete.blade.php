@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('content')
+{{-- @extends('layouts.master')
+@section('content') --}}
 
 <form action="{{url('category/delete', $data->id)}}" method="POST">
     @csrf
@@ -7,4 +7,4 @@
     <button type="submit">Delete</button>
 </form>
  
-@endsection  
+{{-- @endsection   --}}

@@ -20,23 +20,23 @@ class BlogController extends Controller
     }
 
     public function store(Request $request)
-{
-
-    $data = new Blog();
-    $data->title = $request->title;
-    $data->description = $request->description;
-    $data->category_id = $request->category_id;
-    if ($request->hasFile('photo')) {
-        $image = $request->file('photo');
-        $name = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images');
-        $image->move($destinationPath, $name);
-        $data->photo = $name;
+    {
+        // dd($request->all());
+        $data = new Blog();
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $data->category_id = $request->category_id;
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $data->photo = $name;
+        }
+        $data->email = $request->email;
+        $data->save();
+        return redirect()->route('blog.index');
     }
-    $data->email = $request->email;
-    $data->save();
-    return redirect()->route('blog.index');
-}
 
     public function edit($id){
         $data = Blog::find($id);
@@ -49,6 +49,7 @@ class BlogController extends Controller
         $data = Blog::find($id);
         $data->title = $request->title;
         $data->description = $request->description;
+        $data->category_id = $request->category_id;
         if ($request->hasFile('photo')) {
             $image = $request->file('photo');
             $name = time().'.'.$image->getClientOriginalExtension();
