@@ -21,9 +21,6 @@
             <a rel="noopener noreferrer" href="#" class="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">HOME</a>
           </li>
           <li class="flex">
-            <a rel="noopener noreferrer" href="#" class="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">PLANS</a>
-          </li>
-          <li class="flex">
             <a rel="noopener noreferrer" href="#" class="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">SERVICES</a>
           </li>
       
