@@ -1,4 +1,4 @@
-{{-- @extends('layouts.master')
+@extends('layouts.master')
 @section('content')
 
 <!-- start slider -->
@@ -13,7 +13,7 @@
   </div>
   <!-- end slider -->
 
-@endsection --}}
+@endsection
 
 
 
