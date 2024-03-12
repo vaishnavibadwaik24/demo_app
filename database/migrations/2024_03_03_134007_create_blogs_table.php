@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string("photo")->nullable();
-            $table->text("email")->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

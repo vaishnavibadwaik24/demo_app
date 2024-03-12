@@ -1,16 +1,34 @@
-@extends('layouts.master')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Category</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
 <form action="{{url('category/update',$data->id)}}" method="POST">
     @csrf
-<div class="lg:w-1/2 md:w-1/ px-6 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-    <h2 class="text-gray-900 text-lg mb-1 font-medium title-font text-center">Edit Category</h2>
-    <div class="relative mb-4">
-      <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
-      <input type="text" id="name" name="name" value="{{$data->name}}"
-        class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    <div class="container px-5 py-24 mx-auto mt-5 pb-5">
+      <div class="text-danger text-center pb-4">
+        <h2>Edit Category</h2>
+      </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-8">
+                <div class="mb-4">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" value="{{ $data->name }}" class="form-control">
+                </div>
+                <div class="col-12 mb-3 text-center">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{{ url('category') }}" class="btn btn-primary">Back</a>
+                  </div>
+                
+            </div>
+        </div>
     </div>
-    <button
-      class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Update</button>
-  </div>
 </form>
-@endsection
+</body>
+</html>

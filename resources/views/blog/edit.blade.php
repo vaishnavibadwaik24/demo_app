@@ -1,52 +1,64 @@
-@extends('layouts.master')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
+</head>
+<body>
 
+<div class="d-flex justify-content-center align-items-center">
 <form action="{{url('blog/update', $data->id)}}" method="POST" enctype="multipart/form-data">
   @csrf
-  <div class="lg:w-1/2 md:w-1/ px-6 bg-white md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-    <h2 class="text-gray-900 text-lg mb-1 font-medium title-font text-center">Edit Blog</h2>
-    <div class="relative mb-4">
-      <label for="title" class="leading-7 text-sm text-gray-600">Title</label>
-      <input type="text" id="title" name="title" value="{{$data->title}}"
-        class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-    </div>
-    <div class="relative mb-4">
-      <label for="description" class="leading-7 text-sm text-gray-600">Description</label>
-      <textarea type="text" id="description" name="description" 
-        class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$data->description}}</textarea>
-    </div>
-    <div class="p-2 w-full">
-      <div class="relative">
-        <label for="category_id" class="leading-7 text-sm text-gray-600">Category</label>&nbsp;
-        <select name="category_id" id="category_id" class="bg-gray-100 border border-gray-300 focus:border-indigo-500">
+  <div class="container px-5 mt-4 py-15 pb-4">
+    <div class="col">
+      <div class="text-danger text-center pb-4">
+        <h2>Edit Blog</h2>
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="title" class="form-label bigger-label">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{$data->title}}" required>
+      </div>
+      <label for="editor" class="form-label bigger-label">Description:</label>
+        <div id="editorWrapper" class="col-md-12 mb-3">
+          <textarea class="form-control" id="editor" name="description">{{$data->description}}</textarea>
+        </div>
+      <div class="col-md-12 mb-3">
+        <label for="category_id" class="form-label bigger-label">Category:</label>
+        <select class="form-select" id="category_id" name="category_id" required>
           <option value="">Select Category</option>
           @foreach($categories as $category)
           <option value="{{ $category->id }}" {{ old('category_id', $data->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
           @endforeach
         </select>
       </div>
-    </div>
-    <div class="p-2 w-full">
-      <div class="relative">
-        <label for="photo" class="leading-7 text-sm text-gray-600">Current Photo</label>&nbsp;
-          <img src="{{ asset('images/'.$data->photo) }}" alt="Profile" style="max-width: 100px; max-height: 100px;">
+      <div class="col-md-12 mb-3">
+        <label for="photo" class="form-label bigger-label">Current Photo:</label>
+        <img src="{{ asset('images/'.$data->photo) }}" alt="Profile" style="max-width: 100px; max-height: 100px;">
       </div>
-    </div>    
-    <div class="p-2 w-full">
-      <div class="relative">
-        <label for="photo" class="leading-7 text-sm text-gray-600">New Photo</label>
-        <input type="file" id="photo" name="photo" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-25 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out">
+      <div class="col-md-12 mb-3">
+        <label for="photo" class="form-label bigger-label">New Photo:</label>
+        <input class="form-control" type="file" id="photo" name="photo">
       </div>
-    </div>
-    <div class="p-2 w-full">
-      <div class="relative">
-        <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
-        <input type="text" id="email" name="email" value="{{$data->email}}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ url('blog') }}" class="btn btn-primary">Back</a>
       </div>
     </div>
-    
-    <button class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg ">Update</button>
-  </div>
+    </div>
 </form>
+</div>
+<script>
+  ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .catch( error => {
+      console.error( error );
+    } );
+</script>
 
-@endsection
+</body>
+</html>
